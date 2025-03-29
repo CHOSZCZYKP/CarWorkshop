@@ -1,4 +1,5 @@
-﻿using CarWorkshop.Domain.Interfaces;
+﻿using CarWorkshop.Application.ApplicationUser;
+using CarWorkshop.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,23 @@ namespace CarWorkshop.Application.CarWorkshop.Commands.EditCarWorkshop
     internal class EditCarWorkshopCommandHandler : IRequestHandler<EditCarWorkshopCommand>
     {
         private readonly ICarWorkshopRepository _repository;
-        public EditCarWorkshopCommandHandler(ICarWorkshopRepository repository)
+        private readonly IUserContext _userContext;
+        public EditCarWorkshopCommandHandler(ICarWorkshopRepository repository,IUserContext userContext)
         {
             this._repository = repository;
+            this._userContext = userContext;
         }
         public async Task<Unit> Handle(EditCarWorkshopCommand request, CancellationToken cancellationToken)
         {
             var carWorkshop = await _repository.GetByEncodedName(request.EncodedName!);
+
+            var user = _userContext.GetCurrentUser();
+            var isEditable = user != null && (carWorkshop.CreatedById == user.Id || user.IsInRole("Moderator"));
+
+            if (!isEditable)
+            {
+                return Unit.Value;
+            }
 
             carWorkshop.Description = request.Description;
             carWorkshop.About = request.About;

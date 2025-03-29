@@ -5,7 +5,9 @@ using CarWorkshop.Application.CarWorkshop.Commands.EditCarWorkshop;
 using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using CarWorkshop.Application.CarWorkshop.Queries.GetCarWorkshopByEncodedName;
 using CarWorkshop.Domain.Entities;
+using CarWorkshop.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarWorkshop.Controllers
@@ -26,6 +28,7 @@ namespace CarWorkshop.Controllers
             return View(carWorkshops); 
         }
 
+        [Authorize(Roles ="Owner")]
         public IActionResult Create()
         {
             return View();
@@ -43,6 +46,11 @@ namespace CarWorkshop.Controllers
         {
             var dto = await _mediator.Send(new GetCarWorkshopByEncodedNameQuery(encodedName));
 
+            if (!dto.IsEditable)
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
             EditCarWorkshopCommand model = _mapper.Map<EditCarWorkshopCommand>(dto);
 
             return View(model);
@@ -57,18 +65,24 @@ namespace CarWorkshop.Controllers
                 return View(command);
             }
             await _mediator.Send(command);
-            return RedirectToAction(nameof(Index)); //TODO: refactor
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
+        [Authorize(Roles = "Owner")]
         public async Task<IActionResult> Create(CreateCarWorkshopCommand command)
         {
             if (!ModelState.IsValid)
             {
                 return View(command);
             }
+
             await _mediator.Send(command);
-            return RedirectToAction(nameof(Index)); //TODO: refactor
+
+            var notification = new Notification("success", $"Created carworkshop {command.Name}");
+            TempData["Notification"] = notification;
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
