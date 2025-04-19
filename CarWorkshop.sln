@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWorkshop", "CarWorkshop\CarWorkshop.csproj", "{665AF5DD-FA70-4B56-8A3E-005CDE149084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarWorkshop", "CarWorkshop\CarWorkshop.csproj", "{665AF5DD-FA70-4B56-8A3E-005CDE149084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWorkshop.Domain", "CarWorkshop.Domain\CarWorkshop.Domain.csproj", "{9E564DA1-5521-430C-9115-E527F6E6CED8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarWorkshop.Domain", "CarWorkshop.Domain\CarWorkshop.Domain.csproj", "{9E564DA1-5521-430C-9115-E527F6E6CED8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWorkshop.Application", "CarWorkshop.Application\CarWorkshop.Application.csproj", "{0FA6F51D-7B66-4403-9908-6395AB4148A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarWorkshop.Application", "CarWorkshop.Application\CarWorkshop.Application.csproj", "{0FA6F51D-7B66-4403-9908-6395AB4148A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWorkshop.Infrastructure", "CarWorkshop.Infrastructure\CarWorkshop.Infrastructure.csproj", "{D17D1717-4931-4029-B019-7BBB19B9B3EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarWorkshop.Infrastructure", "CarWorkshop.Infrastructure\CarWorkshop.Infrastructure.csproj", "{D17D1717-4931-4029-B019-7BBB19B9B3EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWorkshop.DomainTests", "CarWorkshop.DomainTests\CarWorkshop.DomainTests.csproj", "{A4744129-28F0-4353-9CB2-38CBA485AADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWorkshop.ApplicationTests", "CarWorkshop.ApplicationTests\CarWorkshop.ApplicationTests.csproj", "{40BB1B36-6056-4D13-B222-EC6CAF6F2FD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B055B0AF-0087-4314-95BE-C2FF5A51A92F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWorkshopTests", "CarWorkshopTests1\CarWorkshopTests.csproj", "{A0BB6260-31C2-42C3-BBC0-989110281AD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +41,26 @@ Global
 		{D17D1717-4931-4029-B019-7BBB19B9B3EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D17D1717-4931-4029-B019-7BBB19B9B3EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D17D1717-4931-4029-B019-7BBB19B9B3EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4744129-28F0-4353-9CB2-38CBA485AADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4744129-28F0-4353-9CB2-38CBA485AADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4744129-28F0-4353-9CB2-38CBA485AADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4744129-28F0-4353-9CB2-38CBA485AADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40BB1B36-6056-4D13-B222-EC6CAF6F2FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BB1B36-6056-4D13-B222-EC6CAF6F2FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BB1B36-6056-4D13-B222-EC6CAF6F2FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BB1B36-6056-4D13-B222-EC6CAF6F2FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0BB6260-31C2-42C3-BBC0-989110281AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BB6260-31C2-42C3-BBC0-989110281AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BB6260-31C2-42C3-BBC0-989110281AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BB6260-31C2-42C3-BBC0-989110281AD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A4744129-28F0-4353-9CB2-38CBA485AADB} = {B055B0AF-0087-4314-95BE-C2FF5A51A92F}
+		{40BB1B36-6056-4D13-B222-EC6CAF6F2FD8} = {B055B0AF-0087-4314-95BE-C2FF5A51A92F}
+		{A0BB6260-31C2-42C3-BBC0-989110281AD4} = {B055B0AF-0087-4314-95BE-C2FF5A51A92F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D80C71F8-2612-4464-8ED1-4F31518428A4}
